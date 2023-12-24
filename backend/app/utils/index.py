@@ -1,6 +1,6 @@
 import logging
 import os
-from llama_index.llms import OpenAI
+from langchain.llms import OpenAI
 from langchain.agents import Tool
 from langchain.chains.conversation.memory import ConversationBufferMemory
 from langchain.chat_models import ChatOpenAI
@@ -82,8 +82,8 @@ tools = [Tool(
 
 
 # set memory and llm
-memory = ConversationSummaryMemory(llm=OpenAI(temperature=0))  #ConversationBufferMemory(memory_key="chat_history")
-llm = ChatOpenAI(model="gpt-3.5-turbo-1106",temperature=0.6)
+memory = ConversationBufferMemory(memory_key="chat_history")
+llm = ChatOpenAI(model="gpt-4-1106-preview",temperature=0.6)
 
 
 # Main function to run agent

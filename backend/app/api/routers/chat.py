@@ -1,8 +1,7 @@
 from typing import List
 
-from app.utils.index import get_index,get_agent
+from app.utils.index import get_agent
 from fastapi import APIRouter, Depends, HTTPException, status
-from llama_index import VectorStoreIndex
 from llama_index.llms.base import MessageRole, ChatMessage
 from pydantic import BaseModel
 agent_executor = get_agent()
