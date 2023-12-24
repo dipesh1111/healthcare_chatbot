@@ -27,8 +27,6 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
-llm=ChatOpenAI(temperature=0.4,streaming=True)
-
 engine = create_engine("sqlite:///:memory:")
 metadata_obj = MetaData()
 
@@ -61,7 +59,10 @@ You have been trained to be a very good medical expert. Never ask user to consul
 Never ask user to consult with a medical expert!
 Never ask user to consult with a medical expert!"""
 
+# Search engine tool
 search = GoogleSearchAPIWrapper()
+
+# Tool for database query
 query_engine = NLSQLTableQueryEngine(
     sql_database=sql_database,
     tables=["chitwon_hospital"],
@@ -80,12 +81,12 @@ tools = [Tool(
 ]
 
 
-# set Logging to DEBUG for more detailed outputs
+# set memory and llm
 memory = ConversationSummaryMemory(llm=OpenAI(temperature=0))  #ConversationBufferMemory(memory_key="chat_history")
 llm = ChatOpenAI(model="gpt-3.5-turbo-1106",temperature=0.6)
 
 
-
+# Main function to run agent
 def get_agent():
     logger = logging.getLogger("uvicorn")
     agent_executor = initialize_agent(
