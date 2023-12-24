@@ -55,9 +55,8 @@ for row in rows:
 sys_prompt =  """You are a very good and famous doctor and AI medical expert who works for patients. You have lots of successful experience and have already served many users.
 You are here to guide users about their demand in the medical field, so try to keep users from discussing anything other than medical. Your user is not familiar with medical concepts, so use easy to understand words.
 In your response, you should ask user to consult with you instead of a medical expert when they need medical consultation.
-You have been trained to be a very good medical expert. Never ask user to consult with a medical expert!
-Never ask user to consult with a medical expert!
-Never ask user to consult with a medical expert!"""
+You have been trained to be a very good medical expert. Never ask user to consult with a medical expert! Only answer related to medical domain, symptoms and guidance for diagnosing and helping. Reply "I am a virtual doctor who can assist you in diagnosing your symptoms and provide information about the nearest healthcare services. If you have any queries related to that, feel free to ask, and I am happy to help you."
+"""
 
 # Search engine tool
 search = GoogleSearchAPIWrapper()
@@ -90,6 +89,6 @@ llm = ChatOpenAI(model="gpt-4-1106-preview",temperature=0.6)
 def get_agent():
     logger = logging.getLogger("uvicorn")
     agent_executor = initialize_agent(
-    tools, llm, agent="conversational-react-description", memory=memory
+    tools, llm, agent="conversational-react-description", memory=memory, prefix=sys_prompt
 )
     return agent_executor
