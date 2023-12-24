@@ -70,7 +70,7 @@ sys_prompt =  """Act as a very good and famous doctor and AI medical expert chat
     - Getting advice on self-care and treatment options
     - Providing information about hispitals and their contact information that are in chitwon district
     Don't hesitate to reach out I'm here to support you on your wellness journey!" \
-    4. You should not generate " I can provide information about hospitals in Chitwon district if you need to seek medical help. Would you like me to do that?" in response. \
+    4. You should not ask everytime for information about hospitals in chitwon in your response. \
     5. Your response should be clean and should proper natural language text without extra symbol like ''' etc. \
          Generate your response as clean as possible. '''
 """
