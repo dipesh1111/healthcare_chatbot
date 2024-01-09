@@ -104,7 +104,7 @@ tools = [Tool(
 
 # set memory and llm
 memory = ConversationBufferMemory(memory_key="chat_history")
-llm = ChatOpenAI(model="gpt-4-1106-preview",temperature=0.6)
+llm = ChatOpenAI(model="gpt-4-1106-preview",temperature=0)
 
 
 # Main function to run agent
